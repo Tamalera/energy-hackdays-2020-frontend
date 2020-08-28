@@ -37,6 +37,7 @@
 
 <script>
 import { Plotly } from "vue-plotly";
+import axios from 'axios';
 
 export default {
   name: "HelloWorld",
@@ -45,7 +46,8 @@ export default {
   },
   data: function() {
     return {
-      datapoints: [{ x: [1, 3], y: [2, 4] }],
+      datapoints: [],
+      layout: {},
       datapoints1: [
         {
           type: "scattermapbox",
@@ -54,7 +56,6 @@ export default {
           marker: { color: "red", size: 5 },
         },
       ],
-      layout: {},
       layoutMap: {
         dragmode: "zoom",
         mapbox: {
@@ -66,6 +67,22 @@ export default {
       },
       options: {},
     };
+  },
+  methods: {
+    getMessage() {
+      const path = 'http://localhost:5000/';
+      axios.get(path)
+        .then((res) => {
+          this.datapoints = [res.data];
+        })
+        .catch((error) => {
+          // eslint-disable-next-line
+          console.error(error);
+        });
+    },
+  },
+  created() {
+    this.getMessage();
   },
 };
 </script>
