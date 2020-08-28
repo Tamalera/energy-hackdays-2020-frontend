@@ -19,6 +19,18 @@
           </v-card-text>
         </v-card>
       </v-col>
+      <v-col class="mb-5" cols="12">
+        <v-card elevation="5">
+          <v-card-title>Dummy Map</v-card-title>
+          <v-card-text>
+            <Plotly
+              :data="datapoints1"
+              :layout="layoutMap"
+              :display-mode-bar="false"
+            ></Plotly>
+          </v-card-text>
+        </v-card>
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -34,7 +46,24 @@ export default {
   data: function() {
     return {
       datapoints: [{ x: [1, 3], y: [2, 4] }],
+      datapoints1: [
+        {
+          type: "scattermapbox",
+          lon: [8, 8.1],
+          lat: [47, 46.8],
+          marker: { color: "red", size: 5 },
+        },
+      ],
       layout: {},
+      layoutMap: {
+        dragmode: "zoom",
+        mapbox: {
+          style: "open-street-map",
+          center: { lat: 46.8, lon: 8 },
+          zoom: 6.5,
+        },
+        margin: { r: 0, t: 0, b: 0, l: 0 },
+      },
       options: {},
     };
   },
