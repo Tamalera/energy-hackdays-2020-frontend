@@ -4,9 +4,11 @@
       Energy Hackdays 2020
       <v-spacer></v-spacer>
       <v-btn
-      class="mr-2"
-      ><router-link to="/">Public Charging Stations</router-link></v-btn>
-      <v-btn><router-link to="/private">Private Charging Stations</router-link></v-btn>
+      class="mr-2 black"
+      ><router-link to="/" class="white--text">Public Charging Stations</router-link></v-btn>
+      <v-btn
+      class="black"
+      ><router-link to="/private" class="white--text">Private Charging Stations</router-link></v-btn>
     </v-app-bar>
 
     <v-main>
